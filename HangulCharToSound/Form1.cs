@@ -28,7 +28,7 @@ namespace HangulCharToSound
 
         }
 
-        private char choseongSingleToJongseong(char c)
+        public char choseongSingleToJongseong(char c)
         {
             int charValue = (int)c;
             if (charValue < JongseongStart)
@@ -51,7 +51,7 @@ namespace HangulCharToSound
                 }
 
                 //Case 3: 11AE map to 1103
-                if (isBetween(charValue, 0x11AE - 1, 0x11AB + 1))
+                if (isBetween(charValue, 0x11AE - 1, 0x11AE + 1))
                 {
                     return (char)(0x1103);
                 }
