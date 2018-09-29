@@ -37,6 +37,7 @@ namespace HangulCharToSound
             }
             else
             {
+
                 int shiftBack = charValue - ChoseongJongseongDist;
                 //Case 1: 11A8 - 11A9 map to 1100 - 1101
                 if (isBetween(charValue, 0x11A8 - 1, 0x11A9 + 1))
@@ -83,6 +84,29 @@ namespace HangulCharToSound
             }
 
             throw new NotImplementedException();
+
+        }
+
+        public char[] splitChoseongDoubleConsonant(char c)
+        {
+            int charValue = (int)c;
+            if (charValue < JongseongStart)
+            {
+                throw new ArgumentOutOfRangeException("Input char is not part of the choseong set.");
+            }
+            else if(charValue < 0x11AE)
+            {
+                switch (charValue)
+                {
+                    case 0x11AA:
+                        return new char[] { 'ᆨ', 'ᆺ' };
+                    case 0x11AC:
+                        return new char[] { 'ᆫ', 'ᆽ' };
+                    case 0x11AD:
+                        return new char[] { 'ᆫ', 'ᇂ' };
+                }
+                
+            }
 
         }
 
