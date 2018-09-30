@@ -105,8 +105,29 @@ namespace HangulCharToSound
                     case 0x11AD:
                         return new char[] { 'ᆫ', 'ᇂ' };
                 }
-                
+
             }
+            else
+            {
+                //char[] charArr = new char[] { 'ᆰ', 'ᆱ', 'ᆲ', 'ᆳ', 'ᆴ', 'ᆵ', 'ᆶ', 'ᆹ' };
+                char[] charArr = new char[] { 'ᆨ', 'ᆷ', 'ᆸ', 'ᆺ', 'ᇀ', 'ᇁ', 'ᇂ' };
+
+                int index = charValue - 0x11B0;
+
+                if(index < 6)
+                {
+                    return new char[] { 'ᆯ', charArr[index] };
+                }
+                else
+                {
+                    return new char[] { charArr[2], charArr[3] };
+                }
+
+
+            }
+
+
+            throw new NotImplementedException();
 
         }
 
