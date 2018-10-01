@@ -14,6 +14,18 @@ namespace HangulCharToSound
 
         const int ChoseongJongseongDist = JongseongStart - ChoseongStart;
 
+        #region Hangul algorithm const
+        static int SBase = 0xAC00;
+        static int LBase = 0x1100;
+        static int VBase = 0x1161;
+        static int TBase = 0x11A7;
+        static int LCount = 19;
+        static int VCount = 21;
+        static int TCount = 28;
+        static int NCount = VCount * TCount;
+        static int SCount = LCount * NCount;
+        #endregion
+
         public static char choseongSingleToJongseong(char c)
         {
             int charValue = (int)c;
@@ -115,6 +127,27 @@ namespace HangulCharToSound
 
             throw new NotImplementedException();
 
+        }
+
+        public static string decomposeHangulBlock(char block)
+        {
+            int SIndex = block - SBase;
+
+            if (SIndex < 0 || SIndex >= SCount)
+            {
+                return block.ToString();
+            }
+
+            int L = LBase + SIndex / NCount;
+            int V = VBase + (SIndex % NCount) / TCount;
+            int T = TBase + SIndex % TCount;
+
+            string result = "";
+
+            result += (char)L;
+            result += (char)V;
+            if (T != TBase) result += ((char)T);
+            return result;
         }
 
         /// <summary>

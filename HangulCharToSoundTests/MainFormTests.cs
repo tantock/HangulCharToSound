@@ -42,6 +42,7 @@ namespace HangulCharToSound.Tests
 
             char[] testInput = new char[] { 'ᆪ', 'ᆬ', 'ᆭ', 'ᆰ', 'ᆱ', 'ᆲ', 'ᆳ', 'ᆴ', 'ᆵ', 'ᆶ', 'ᆹ' };
 
+
             char[][] expected = new char[][] { new char[] { 'ᆨ', 'ᆺ' }, new char[] { 'ᆫ' , 'ᆽ' }, new char[] { 'ᆫ', 'ᇂ' }, new char[] { 'ᆯ', 'ᆨ' }, new char[] { 'ᆯ', 'ᆷ' }, new char[] { 'ᆯ', 'ᆸ' }, new char[] { 'ᆯ', 'ᆺ' }, new char[] { 'ᆯ', 'ᇀ' }, new char[] { 'ᆯ', 'ᇁ' }, new char[] { 'ᆯ', 'ᇂ' }, new char[] { 'ᆸ', 'ᆺ' } };
 
             int testArrLen = testInput.Length;
@@ -60,6 +61,32 @@ namespace HangulCharToSound.Tests
                 CollectionAssert.AreEqual(expected[i], result[i]);
             }
             
+        }
+        
+        [TestMethod()]
+        public void decomposeHangulBlockTest()
+        {
+            //Arrange
+            char[] testInput = new char[] { '안', '다' };
+
+            string[] expected = new string[] { "안", "다" };
+
+            int testArrLen = testInput.Length;
+
+            string[] result = new string[testArrLen];
+
+            //Act
+            for(int i = 0; i < testArrLen; i++)
+            {
+                result[i] = Hangul.decomposeHangulBlock(testInput[i]);
+            }
+
+            //Assert
+            for(int i = 0; i < testArrLen; i++)
+            {
+                StringAssert.Equals(result[i], expected[i]);
+            }
+
         }
     }
 }
