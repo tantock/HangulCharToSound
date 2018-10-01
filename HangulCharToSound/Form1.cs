@@ -114,7 +114,7 @@ namespace HangulCharToSound
 
                 int index = charValue - 0x11B0;
 
-                if(index < 6)
+                if(index < 7)
                 {
                     return new char[] { 'ᆯ', charArr[index] };
                 }
