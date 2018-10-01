@@ -11,8 +11,6 @@ namespace HangulCharToSound.Tests
     [TestClass()]
     public class MainFormTests
     {
-
-        MainForm testForm = new MainForm();
         [TestMethod()]
         public void choseongSingleToJongseongTest()
         {
@@ -29,7 +27,7 @@ namespace HangulCharToSound.Tests
             //Act
             for(int i = 0; i < testArrLen; i++)
             {
-                result[i] = testForm.choseongSingleToJongseong(testInput[i]);
+                result[i] = Hangul.choseongSingleToJongseong(testInput[i]);
             }
 
             //Assert
@@ -53,7 +51,7 @@ namespace HangulCharToSound.Tests
             //Act
             for(int i = 0; i < testArrLen; i++)
             {
-                result[i] = testForm.splitChoseongDoubleConsonant(testInput[i]);
+                result[i] = Hangul.splitChoseongDoubleConsonant(testInput[i]);
             }
 
             //Assert

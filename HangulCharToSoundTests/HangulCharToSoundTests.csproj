@@ -57,6 +57,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="HangulCharManipulation.cs" />
     <Compile Include="MainFormTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
